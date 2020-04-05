@@ -6,6 +6,8 @@
 package internship.project1;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 import static javafx.application.Platform.exit;
 import javafx.event.ActionEvent;
@@ -22,6 +24,9 @@ import javafx.stage.Stage;
  * @author Legop
  */
 public class FXMLDocumentController implements Initializable {
+    
+    final private DateTimeFormatter currentDate = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+    final private LocalDate localDate = LocalDate.now();
     
     @FXML
     private Label label;
@@ -62,7 +67,8 @@ public class FXMLDocumentController implements Initializable {
         fileChooser.setTitle("Open Resource File");
         fileChooser.showOpenDialog(stage);
 
-        
+        System.out.println("Penguin two!");
+        dateTextField.setText(currentDate.format(localDate));
     }
     
     @FXML
