@@ -13,6 +13,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 /**
@@ -28,14 +30,38 @@ public class FXMLDocumentController implements Initializable {
     private Button closeButton;
     
     @FXML
+    private Button openButton;
+    
+    @FXML
+    private Button saveButton;
+    
+    @FXML
+    private TextField stdFileTextField;
+    
+    @FXML
+    private TextField nameTextField;
+    
+    @FXML
+    private TextField capitalTextField;
+    
+    @FXML
+    private TextField dateTextField;
+    
+    @FXML
     private void handleButtonAction(ActionEvent event) {
         System.out.println("You clicked me!");
-        label.setText("Hello World! Test!");
+        label.setText("Penguin");
     }
     
     @FXML
     private void openButtonAction(ActionEvent event)
     {
+        //Test Openner Code
+        Stage stage = new Stage();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        fileChooser.showOpenDialog(stage);
+
         
     }
     
@@ -45,8 +71,8 @@ public class FXMLDocumentController implements Initializable {
         //Runs the RenameSTD X function
         //RunRename.RenameSTD();
         //Once it is saved...
+        System.out.println("You clicked saved button!");
         label.setText("Your new file name is 4/1/JWheel.std");
-        
     }
     
     @FXML
@@ -58,6 +84,44 @@ public class FXMLDocumentController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        assert dateTextField != null : "fx:id=\"dateTextField\" was not injected: check your FXML file 'FXMLDocument.fxml'.";
+        assert label != null : "fx:id=\"label\" was not injected: check your FXML file 'FXMLDocument.fxml'.";
+        assert openButton != null : "fx:id=\"openButton\" was not injected: check your FXML file 'FXMLDocument.fxml'.";
+        assert saveButton != null : "fx:id=\"saveButton\" was not injected: check your FXML file 'FXMLDocument.fxml'.";
+        assert closeButton != null : "fx:id=\"closeButton\" was not injected: check your FXML file 'FXMLDocument.fxml'.";
     }    
+
+    public TextField getStdFileTextField() {
+        return stdFileTextField;
+    }
+
+    public void setStdFileTextField(TextField stdFileTextField) {
+        this.stdFileTextField = stdFileTextField;
+    }
+
+    public TextField getNameTextField() {
+        return nameTextField;
+    }
+
+    public void setNameTextField(TextField nameTextField) {
+        this.nameTextField = nameTextField;
+    }
+
+    public TextField getCapitalTextField() {
+        return capitalTextField;
+    }
+
+    public void setCapitalTextField(TextField capitalTextField) {
+        this.capitalTextField = capitalTextField;
+    }
+
+    public TextField getDateTextField() {
+        return dateTextField;
+    }
+
+    public void setDateTextField(TextField dateTextField) {
+        this.dateTextField = dateTextField;
+    }
+    
     
 }
