@@ -67,7 +67,7 @@ public class FXMLDocumentController implements Initializable {
         fileChooser.setTitle("Open Resource File");
         fileChooser.showOpenDialog(stage);
 
-        System.out.println("Penguin two!");
+        System.out.println("File uploaded!");
         dateTextField.setText(currentDate.format(localDate));
     }
     
@@ -96,6 +96,13 @@ public class FXMLDocumentController implements Initializable {
         assert saveButton != null : "fx:id=\"saveButton\" was not injected: check your FXML file 'FXMLDocument.fxml'.";
         assert closeButton != null : "fx:id=\"closeButton\" was not injected: check your FXML file 'FXMLDocument.fxml'.";
     }    
+    
+    public void renameFile()
+    {
+        
+    }
+    
+    
 
     public TextField getStdFileTextField() {
         return stdFileTextField;
