@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import java.io.File;
 
 /**
  *
@@ -41,7 +42,7 @@ public class FXMLDocumentController implements Initializable {
     private Button saveButton;
     
     @FXML
-    private TextField stdFileTextField;
+    private File stdFileField;
     
     @FXML
     private TextField nameTextField;
@@ -99,17 +100,30 @@ public class FXMLDocumentController implements Initializable {
     
     public void renameFile()
     {
-        
+      String DTF = TextField.getText(dateTextField);
+      String CTF = TextField.getText(capitalTextField);
+      String NTF = TextField.getText(nameTextField);
+      File oldfile = stdFileField;
+      File newfile = new File(NTF + CTF + DTF);
+      
+      if(oldfile.renameTo(newfile)) {
+           System.out.println("Your file is now " + newfile);
+           
+      } 
+      else {
+         System.out.println("Error");
+        }
+      }
     }
     
     
 
-    public TextField getStdFileTextField() {
-        return stdFileTextField;
+    public File getStdFileField(stdFileField) {
+        return stdFileField;
     }
 
-    public void setStdFileTextField(TextField stdFileTextField) {
-        this.stdFileTextField = stdFileTextField;
+    public void setStdFileField(File stdFileField) {
+        this.stdFileField = stdFileField;
     }
 
     public TextField getNameTextField() {
