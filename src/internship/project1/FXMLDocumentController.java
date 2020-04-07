@@ -27,6 +27,8 @@ public class FXMLDocumentController implements Initializable {
     
     final private DateTimeFormatter currentDate = DateTimeFormatter.ofPattern("MM/dd/yyyy");
     final private LocalDate localDate = LocalDate.now();
+    public FileChooser fileChooser = new FileChooser();
+
     
     @FXML
     private Label label;
@@ -51,22 +53,14 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private TextField dateTextField;
-    
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Penguin");
-    }
-    
+  
     @FXML
     private void openButtonAction(ActionEvent event)
     {
         //Test Openner Code
         Stage stage = new Stage();
-        FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         fileChooser.showOpenDialog(stage);
-
         System.out.println("File uploaded!");
         dateTextField.setText(currentDate.format(localDate));
     }
