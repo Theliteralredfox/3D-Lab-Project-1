@@ -18,6 +18,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import java.io.File;
 
 /**
  *
@@ -27,8 +28,6 @@ public class FXMLDocumentController implements Initializable {
     
     final private DateTimeFormatter currentDate = DateTimeFormatter.ofPattern("MM/dd/yyyy");
     final private LocalDate localDate = LocalDate.now();
-    public FileChooser fileChooser = new FileChooser();
-
     
     @FXML
     private Label label;
@@ -43,7 +42,7 @@ public class FXMLDocumentController implements Initializable {
     private Button saveButton;
     
     @FXML
-    private TextField stdFileTextField;
+    private File stdFileField;
     
     @FXML
     private TextField nameTextField;
@@ -53,14 +52,22 @@ public class FXMLDocumentController implements Initializable {
     
     @FXML
     private TextField dateTextField;
-  
+    
+    @FXML
+    private void handleButtonAction(ActionEvent event) {
+        System.out.println("You clicked me!");
+        label.setText("Penguin");
+    }
+    
     @FXML
     private void openButtonAction(ActionEvent event)
     {
         //Test Openner Code
         Stage stage = new Stage();
+        FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
         fileChooser.showOpenDialog(stage);
+
         System.out.println("File uploaded!");
         dateTextField.setText(currentDate.format(localDate));
     }
@@ -93,17 +100,30 @@ public class FXMLDocumentController implements Initializable {
     
     public void renameFile()
     {
-        
+      String DTF = TextField.getText(dateTextField);
+      String CTF = TextField.getText(capitalTextField);
+      String NTF = TextField.getText(nameTextField);
+      File oldfile = stdFileField;
+      File newfile = new File(NTF + CTF + DTF);
+      
+      if(oldfile.renameTo(newfile)) {
+           System.out.println("Your file is now " + newfile);
+           
+      } 
+      else {
+         System.out.println("Error");
+        }
+      }
     }
     
     
 
-    public TextField getStdFileTextField() {
-        return stdFileTextField;
+    public File getStdFileField(stdFileField) {
+        return stdFileField;
     }
 
-    public void setStdFileTextField(TextField stdFileTextField) {
-        this.stdFileTextField = stdFileTextField;
+    public void setStdFileField(TextField stdFileField) {
+        this.stdFileField = stdFileField;
     }
 
     public TextField getNameTextField() {
